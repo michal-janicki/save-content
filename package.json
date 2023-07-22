@@ -1,26 +1,32 @@
 {
-  "name": "get-content",
+  "name": "save-summary",
   "version": "0.1.0",
   "bin": {
-    "get-content": "bin/get-content.js"
+    "cdk": "bin/cdk.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf dist && tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "cdk"
+    "postinstall": "npm run layer:install",
+    "layer:install": "cd ./lib/layer/nodejs && rm -rf node_modules && npm install",
+    "layer:zip": "cd ./lib/layer && zip -r nodejs.zip nodejs",
+    "cdk": "cdk",
+    "start:dev": "cdk watch"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.1",
+    "@aws-sdk/client-dynamodb": "^3.370.0",
     "@types/node": "20.1.7",
-    "jest": "^29.5.0",
-    "ts-jest": "^29.1.0",
+    "@types/uuid": "^9.0.2",
     "aws-cdk": "2.80.0",
     "ts-node": "^10.9.1",
     "typescript": "~5.0.4"
   },
   "dependencies": {
+    "airtable": "^0.12.1",
     "aws-cdk-lib": "2.80.0",
-    "constructs": "^10.0.0"
+    "constructs": "^10.0.0",
+    "dotenv": "^16.3.1",
+    "uuid": "^9.0.0"
   }
 }

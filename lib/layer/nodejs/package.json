@@ -1,0 +1,8 @@
+{
+  "name": "airtable-layer",
+  "version": "0.1.0",
+  "dependencies": {
+    "airtable": "^0.12.1",
+    "uuid": "^9.0.0"
+  }
+}
